@@ -1,5 +1,5 @@
 from functools import lru_cache
-
+from typing import List
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -18,12 +18,12 @@ class Settings(BaseSettings):
     # App
     app_env: str = "production"
     log_level: str = "INFO"
-    cors_origins: list[str] = ["*"]
+    cors_origins: List[str] = ["*"]
 
 
 @lru_cache
 def get_settings() -> Settings:
-    return Settings()  # type: ignore[call-arg]
+    return Settings()
 
 
 settings = get_settings()
